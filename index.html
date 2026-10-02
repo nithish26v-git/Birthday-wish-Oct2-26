@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Stepping Into 22 ❤️</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: white;
+}
+
+
+/* =========================
+   MAIN BACKGROUND
+========================= */
+
+.screen {
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background-image:
+
+        linear-gradient(
+            135deg,
+            rgba(255, 55, 145, .55),
+            rgba(125, 40, 190, .65)
+        ),
+
+        url("background.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+/* Extra pink/purple glow */
+
+.screen::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 120, 210, .35),
+            transparent 70%
+        );
+
+    top: -150px;
+    left: -150px;
+
+    filter: blur(20px);
+
+    animation: glow 5s ease-in-out infinite;
+
+}
+
+
+/* =========================
+   DARK GLASS OVERLAY
+========================= */
+
+.overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(30, 0, 45, .25),
+            rgba(30, 0, 50, .55)
+        );
+
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 92%;
+
+    max-width: 520px;
+
+    text-align: center;
+
+}
+
+
+/* =========================
+   OPENING
+========================= */
+
+.opening {
+
+    animation:
+        appear 1.4s ease;
+}
+
+
+.small-text {
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: .9;
+
+    margin-bottom: 18px;
+
+}
+
+
+h1 {
+
+    font-size:
+        clamp(48px, 14vw, 78px);
+
+    line-height: .9;
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 8px 30px
+        rgba(60, 0, 80, .6);
+
+}
+
+
+.name {
+
+    margin-top: 20px;
+
+    font-size: 27px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.button {
+
+    margin-top: 32px;
+
+    padding:
+        15px 30px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffe5f5
+        );
+
+    color: #7b176f;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.35);
+
+    transition: .3s;
+
+}
+
+
+.button:active {
+
+    transform:
+        scale(.92);
+
+}
+
+
+/* =========================
+   FLOATING EMOJIS
+========================= */
+
+.decor {
+
+    position: absolute;
+
+    z-index: 3;
+
+    font-size: 28px;
+
+    pointer-events: none;
+
+    animation:
+        float 4s ease-in-out infinite;
+
+}
+
+
+/* individual positions */
+
+.d1 {
+    top: 9%;
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.d2 {
+    top: 15%;
+    right: 8%;
+    animation-delay: 1s;
+}
+
+.d3 {
+    bottom: 14%;
+    left: 9%;
+    animation-delay: 1.5s;
+}
+
+.d4 {
+    bottom: 9%;
+    right: 10%;
+    animation-delay: .5s;
+}
+
+.d5 {
+    top: 32%;
+    left: 5%;
+    animation-delay: 2s;
+}
+
+.d6 {
+    top: 35%;
+    right: 5%;
+    animation-delay: 1.2s;
+}
+
+.d7 {
+    bottom: 30%;
+    left: 5%;
+    animation-delay: 2.5s;
+}
+
+.d8 {
+    bottom: 32%;
+    right: 5%;
+    animation-delay: 1.7s;
+}
+
+
+/* =========================
+   BIRTHDAY WISH
+========================= */
+
+.wish {
+
+    display: none;
+
+    width: 100%;
+
+    max-height: 82vh;
+
+    overflow-y: auto;
+
+    padding:
+        30px 23px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 105, 180, .20),
+            rgba(130, 50, 190, .28)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    box-shadow:
+        0 20px 60px
+        rgba(40, 0, 60, .4);
+
+    animation:
+        wishAppear 1s ease;
+
+}
+
+
+.wish h2 {
+
+    font-size: 29px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.wish p {
+
+    font-size: 16px;
+
+    line-height: 1.75;
+
+    text-align: center;
+
+}
+
+
+.wish .button {
+
+    margin-top: 25px;
+
+}
+
+
+/* =========================
+   FINAL SCREEN
+========================= */
+
+.final {
+
+    display: none;
+
+    animation:
+        finalAppear 1.2s ease;
+
+}
+
+
+.final-small {
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+
+.final-number {
+
+    margin-top: 20px;
+
+    font-size:
+        clamp(100px, 30vw, 170px);
+
+    font-weight: 900;
+
+    line-height: .8;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff,
+            #ffc1e7
+        );
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+    text-shadow:
+        0 10px 40px
+        rgba(0,0,0,.25);
+
+}
+
+
+.final-text {
+
+    margin-top: 35px;
+
+    font-size: 23px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+#confetti {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 50;
+
+    overflow: hidden;
+
+}
+
+
+.confetti {
+
+    position: absolute;
+
+    top: -20px;
+
+    width: 7px;
+
+    height: 13px;
+
+    border-radius: 3px;
+
+    animation:
+        fall linear forwards;
+
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes wishAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.88)
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes finalAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.6);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes float {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-18px)
+            rotate(5deg);
+
+    }
+
+}
+
+
+@keyframes glow {
+
+    0%,100% {
+
+        transform:
+            scale(1);
+
+        opacity: .6;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.3);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes fall {
+
+    from {
+
+        transform:
+            translateY(-20px)
+            rotate(0deg);
+
+        opacity: 1;
+
+    }
+
+    to {
+
+        transform:
+            translateY(110vh)
+            translateX(var(--drift))
+            rotate(720deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px) {
+
+    .content {
+
+        width: 94%;
+
+    }
+
+    .wish {
+
+        padding:
+            25px 18px;
+
+        max-height: 78vh;
+
+    }
+
+    .wish h2 {
+
+        font-size: 26px;
+
+    }
+
+    .wish p {
+
+        font-size: 15px;
+
+        line-height: 1.7;
+
+    }
+
+    .decor {
+
+        font-size: 23px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="screen">
+
+    <div class="overlay"></div>
+
+
+    <!-- =====================
+         FLOATING DECORATIONS
+    ====================== -->
+
+    <div class="decor d1">🍫</div>
+
+    <div class="decor d2">💜</div>
+
+    <div class="decor d3">🍫</div>
+
+    <div class="decor d4">🌸</div>
+
+    <div class="decor d5">🫓</div>
+
+    <div class="decor d6">🍫</div>
+
+    <div class="decor d7">🎂</div>
+
+    <div class="decor d8">💖</div>
+
+
+    <div id="confetti"></div>
+
+
+    <div class="content">
+
+
+        <!-- =====================
+             OPENING SCREEN
+        ====================== -->
+
+        <div
+            class="opening"
+            id="opening">
+
+            <div class="small-text">
+                A new chapter begins ✨
+            </div>
+
+
+            <h1>
+
+                Stepping<br>
+                Into 22
+
+            </h1>
+
+
+            <div class="name">
+
+                Nuva ❤️
+
+            </div>
+
+
+            <button
+                class="button"
+                onclick="showWish()">
+
+                Open Your Birthday Wish 💌
+
+            </button>
+
+        </div>
+
+
+        <!-- =====================
+             BIRTHDAY MESSAGE
+        ====================== -->
+
+        <div
+            class="wish"
+            id="wish">
+
+
+            <h2>
+                Happy Birthday, Nuva! 🎂💗
+            </h2>
+
+
+            <p>
+
+                Many more happy returns of the day, Nuva! ❤️ I wish you lots of success, happiness, good health, strength and lots of blessings in your life. I hope you achieve everything you wish for and have a beautiful and successful future ahead👩🏻‍⚕️. Since the day we met, we’ve had lots of fights, misunderstandings and so many ups and downs, but still, after everything, we’ve managed to remain good friends. Your maturity is one of the reasons why we are still together even after all these fights, and I really hope this bond continues for many more years with more understanding, happiness and good memories. Once again, Happy Birthday, Nuva! 🎉 Stay happy, stay strong and have an amazing year ahead! ✨
+
+            </p>
+
+
+            <button
+                class="button"
+                onclick="showFinal()">
+
+                One Last Surprise ✨
+
+            </button>
+
+
+        </div>
+
+
+        <!-- =====================
+             FINAL SCREEN
+        ====================== -->
+
+        <div
+            class="final"
+            id="final">
+
+
+            <div class="final-small">
+
+                A new age begins
+
+            </div>
+
+
+            <div class="final-number">
+
+                22
+
+            </div>
+
+
+            <div class="final-text">
+
+                Stepping Into 22 ✨
+
+                <br>
+
+                Happy Birthday, Nuva ❤️
+
+                <br><br>
+
+                🍫 🫓 🎂 💜 🌸
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   SHOW BIRTHDAY WISH
+========================= */
+
+function showWish() {
+
+    document.getElementById("opening")
+        .style.display = "none";
+
+
+    document.getElementById("wish")
+        .style.display = "block";
+
+
+    createConfetti(130);
+
+}
+
+
+/* =========================
+   SHOW FINAL
+========================= */
+
+function showFinal() {
+
+    document.getElementById("wish")
+        .style.display = "none";
+
+
+    document.getElementById("final")
+        .style.display = "block";
+
+
+    createConfetti(220);
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+const colors = [
+
+    "#ff4d9d",
+    "#ff8bc7",
+    "#d66cff",
+    "#9b5cff",
+    "#ffd166",
+    "#ffffff",
+    "#ff4d6d"
+
+];
+
+
+function createConfetti(amount) {
+
+    const container =
+        document.getElementById("confetti");
+
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const piece =
+            document.createElement("div");
+
+
+        piece.className =
+            "confetti";
+
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+
+        piece.style.background =
+            colors[
+                Math.floor(
+                    Math.random() *
+                    colors.length
+                )
+            ];
+
+
+        piece.style.width =
+            5 + Math.random() * 8 + "px";
+
+
+        piece.style.height =
+            8 + Math.random() * 12 + "px";
+
+
+        piece.style.animationDuration =
+            3 + Math.random() * 4 + "s";
+
+
+        piece.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+
+        piece.style.setProperty(
+            "--drift",
+            (Math.random() - .5) *
+            45 + "vw"
+        );
+
+
+        container.appendChild(piece);
+
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        }, 8000);
+
+    }
+
+}
+
+
+/* Initial small celebration */
+
+setTimeout(() => {
+
+    createConfetti(80);
+
+}, 700);
+
+
+</script>
+
+
+</body>
+
+</html>
