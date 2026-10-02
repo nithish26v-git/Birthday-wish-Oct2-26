@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stepping Into 22 ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #090014;
+    color: white;
+}
+
+/* MAIN STORY */
+.story {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 15% 20%,
+        rgba(255,100,180,.30),
+        transparent 35%),
+        radial-gradient(circle at 85% 80%,
+        rgba(100,80,255,.30),
+        transparent 35%),
+        linear-gradient(160deg,
+        #18002c,
+        #470048,
+        #100019);
+}
+
+/* PAGES */
+
+.page {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(30px);
+
+    pointer-events: none;
+
+    transition: .7s ease;
+}
+
+.page.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* MUSIC */
+
+.music {
+    position: fixed;
+    top: 22px;
+    right: 20px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.4);
+
+    background: rgba(255,255,255,.15);
+
+    backdrop-filter: blur(10px);
+
+    color: white;
+    font-size: 20px;
+
+    z-index: 100;
+
+    cursor: pointer;
+}
+
+/* PROGRESS */
+
+.progress {
+    position: fixed;
+    top: 12px;
+    left: 15px;
+    right: 80px;
+
+    display: flex;
+    gap: 5px;
+
+    z-index: 100;
+}
+
+.progress span {
+    height: 3px;
+    flex: 1;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.3);
+}
+
+.progress span.active {
+    background: white;
+}
+
+/* INTRO */
+
+.cake {
+    font-size: 80px;
+
+    animation: bounce 2s infinite;
+}
+
+.small {
+    margin-bottom: 15px;
+
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    opacity: .7;
+}
+
+h1 {
+    font-size: clamp(40px, 12vw, 68px);
+    line-height: 1;
+
+    background:
+        linear-gradient(90deg,
+        white,
+        #ff91d0,
+        white);
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    margin-top: 15px;
+}
+
+.name {
+    margin-top: 15px;
+
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* BUTTON */
+
+.btn {
+    margin-top: 30px;
+
+    padding: 14px 28px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: white;
+    color: #51005c;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(255,255,255,.2);
+}
+
+/* COUNTDOWN */
+
+.countdown {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 30px;
+}
+
+.time {
+    width: 65px;
+
+    padding: 12px 5px;
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,.12);
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    backdrop-filter: blur(10px);
+}
+
+.time strong {
+    display: block;
+    font-size: 23px;
+}
+
+.time small {
+    font-size: 9px;
+    opacity: .7;
+}
+
+/* PHOTOS */
+
+.photo-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.photos {
+    position: relative;
+
+    width: 280px;
+    height: 350px;
+}
+
+.photo {
+    position: absolute;
+
+    width: 210px;
+    height: 270px;
+
+    object-fit: cover;
+
+    padding: 8px;
+
+    background: white;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.5);
+
+    transition: .5s;
+}
+
+.photo:nth-child(1) {
+    transform:
+        rotate(-9deg)
+        translate(-15px,25px);
+}
+
+.photo:nth-child(2) {
+    transform:
+        rotate(6deg)
+        translate(35px,10px);
+}
+
+.photo:nth-child(3) {
+    transform:
+        rotate(-2deg)
+        translate(8px,-10px);
+}
+
+/* MESSAGE */
+
+.reveal {
+    width: 100%;
+    max-width: 420px;
+
+    min-height: 260px;
+
+    padding: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.10);
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    backdrop-filter: blur(15px);
+
+    cursor: pointer;
+}
+
+.tap {
+    font-size: 18px;
+
+    animation: pulse 1.5s infinite;
+}
+
+.message {
+    display: none;
+
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.message.show {
+    display: block;
+
+    animation:
+        appear 1s ease;
+}
+
+/* FINAL */
+
+.number {
+    font-size: 140px;
+    font-weight: 900;
+
+    line-height: .8;
+
+    background:
+        linear-gradient(
+        180deg,
+        white,
+        #ff78c8);
+
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.final {
+    margin-top: 30px;
+
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+/* CONFETTI */
+
+#confetti {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 200;
+
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+
+    top: -20px;
+
+    width: 7px;
+    height: 13px;
+
+    animation:
+        fall linear forwards;
+}
+
+/* ANIMATIONS */
+
+@keyframes bounce {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse {
+    0%,100% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fall {
+    from {
+        transform:
+            translateY(-20px)
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translateY(110vh)
+            translateX(var(--drift))
+            rotate(720deg);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:480px) {
+
+    .photo {
+        width: 195px;
+        height: 250px;
+    }
+
+    .photos {
+        transform: scale(.9);
+    }
+
+    .message {
+        font-size: 14px;
+    }
+
+    .countdown {
+        gap: 5px;
+    }
+
+    .time {
+        width: 60px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="story">
+
+<!-- MUSIC BUTTON -->
+
+<button class="music" onclick="toggleMusic()">
+🎵
+</button>
+
+<audio id="music" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- PROGRESS -->
+
+<div class="progress">
+    <span class="active"></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+
+<!-- PAGE 1 -->
+
+<section class="page active">
+
+    <div class="small">
+        A new chapter begins...
+    </div>
+
+    <div class="cake">
+        🎂
+    </div>
+
+    <h1>
+        Stepping<br>
+        Into 22
+    </h1>
+
+    <div class="name">
+        Nuva ❤️
+    </div>
+
+    <button class="btn"
+            onclick="nextPage()">
+        Tap to Begin ✨
+    </button>
+
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section class="page">
+
+    <div class="small">
+        The countdown
+    </div>
+
+    <h1>
+        22 ✨
+    </h1>
+
+    <div class="countdown">
+
+        <div class="time">
+            <strong id="days">00</strong>
+            <small>DAYS</small>
+        </div>
+
+        <div class="time">
+            <strong id="hours">00</strong>
+            <small>HOURS</small>
+        </div>
+
+        <div class="time">
+            <strong id="minutes">00</strong>
+            <small>MINUTES</small>
+        </div>
+
+        <div class="time">
+            <strong id="seconds">00</strong>
+            <small>SECONDS</small>
+        </div>
+
+    </div>
+
+    <button class="btn"
+            onclick="nextPage()">
+        Our Memories 📸
+    </button>
+
+</section>
+
+
+<!-- PAGE 3 -->
+
+<section class="page">
+
+    <div class="photo-title">
+        A few memories... 📸
+    </div>
+
+    <div class="photos">
+
+        <!-- CHANGE THESE FILE NAMES -->
+
+        <img src="photo1.jpg"
+             class="photo"
+             alt="Memory 1">
+
+        <img src="photo2.jpg"
+             class="photo"
+             alt="Memory 2">
+
+        <img src="photo3.jpg"
+             class="photo"
+             alt="Memory 3">
+
+    </div>
+
+    <button class="btn"
+            onclick="nextPage()">
+        One More Thing 💌
+    </button>
+
+</section>
+
+
+<!-- PAGE 4 -->
+
+<section class="page">
+
+    <div class="small">
+        I wanted to tell you...
+    </div>
+
+    <div class="reveal"
+         onclick="revealMessage()">
+
+        <div class="tap"
+             id="tapText">
+
+            💌
+
+            <br><br>
+
+            Tap to reveal<br>
+            your birthday message
+
+        </div>
+
+
+        <div class="message"
+             id="message">
+
+            Many more happy returns of the day, Nuva! 🎂❤️
+            I wish you lots of success, happiness, good health,
+            strength and lots of blessings in your life. I hope
+            you achieve everything you wish for and have a
+            beautiful and successful future ahead.
+
+            <br><br>
+
+            Since the day we met, we've had lots of fights,
+            misunderstandings and so many ups and downs,
+            but still, after everything, we've managed to
+            remain good friends.
+
+            <br><br>
+
+            Your maturity is one of the reasons why we are
+            still together even after all these fights, and
+            I really hope this bond continues for many more
+            years with more understanding, happiness and
+            good memories.
+
+            <br><br>
+
+            Once again, Happy Birthday, Nuva! ❤️🎉
+            Stay happy, stay strong and have an amazing
+            year ahead! ✨
+
+        </div>
+
+    </div>
+
+    <button class="btn"
+            onclick="nextPage()">
+        Continue ✨
+    </button>
+
+</section>
+
+
+<!-- PAGE 5 -->
+
+<section class="page">
+
+    <div class="small">
+        A new chapter
+    </div>
+
+    <div class="number">
+        22
+    </div>
+
+    <div class="final">
+
+        New age.<br>
+        New memories.<br>
+        New happiness.<br>
+        New beginnings. ✨
+
+        <br><br>
+
+        Happy Birthday, Nuva ❤️
+
+    </div>
+
+</section>
+
+</div>
+
+
+<div id="confetti"></div>
+
+
+<script>
+
+/* PAGE NAVIGATION */
+
+let currentPage = 0;
+
+const pages =
+    document.querySelectorAll(".page");
+
+const bars =
+    document.querySelectorAll(".progress span");
+
+
+function showPage(index) {
+
+    if(index < 0 ||
+       index >= pages.length) return;
+
+    pages.forEach(page =>
+        page.classList.remove("active")
+    );
+
+    bars.forEach(bar =>
+        bar.classList.remove("active")
+    );
+
+    pages[index].classList.add("active");
+    bars[index].classList.add("active");
+
+    currentPage = index;
+
+    if(index === 4) {
+        createConfetti(180);
+    }
+}
+
+
+function nextPage() {
+
+    if(currentPage <
+       pages.length - 1) {
+
+        showPage(currentPage + 1);
+
+    }
+}
+
+
+/* SWIPE UP */
+
+let startY = 0;
+
+document.addEventListener("touchstart", e => {
+
+    startY =
+        e.touches[0].clientY;
+
+});
+
+
+document.addEventListener("touchend", e => {
+
+    const endY =
+        e.changedTouches[0].clientY;
+
+    if(startY - endY > 50) {
+        nextPage();
+    }
+
+});
+
+
+/* REVEAL MESSAGE */
+
+function revealMessage() {
+
+    document.getElementById("tapText")
+        .style.display = "none";
+
+    document.getElementById("message")
+        .classList.add("show");
+
+    createConfetti(70);
+}
+
+
+/* MUSIC */
+
+const music =
+    document.getElementById("music");
+
+const musicButton =
+    document.querySelector(".music");
+
+
+function toggleMusic() {
+
+    if(music.paused) {
+
+        music.play();
+
+        musicButton.innerHTML = "🔊";
+
+    } else {
+
+        music.pause();
+
+        musicButton.innerHTML = "🎵";
+
+    }
+
+}
+
+
+/* COUNTDOWN */
+
+/*
+   CHANGE THIS DATE
+   TO HER BIRTHDAY.
+
+   Example:
+   October 3, 2026
+*/
+
+const birthday =
+    new Date(
+        "October 3, 2026 00:00:00"
+    ).getTime();
+
+
+function updateCountdown() {
+
+    const now =
+        new Date().getTime();
+
+    let distance =
+        birthday - now;
+
+    if(distance < 0)
+        distance = 0;
+
+
+    const days =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (distance %
+            (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (distance %
+            (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (distance %
+            (1000 * 60)) /
+            1000
+        );
+
+
+    document.getElementById("days")
+        .textContent =
+        String(days).padStart(2,"0");
+
+
+    document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2,"0");
+
+
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2,"0");
+
+
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2,"0");
+
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* CONFETTI */
+
+const colors = [
+    "#ff4d6d",
+    "#ffd166",
+    "#06d6a0",
+    "#4cc9f0",
+    "#ffffff",
+    "#c77dff",
+    "#ff9f1c"
+];
+
+
+function createConfetti(amount) {
+
+    const container =
+        document.getElementById("confetti");
+
+
+    for(let i = 0; i < amount; i++) {
+
+        const piece =
+            document.createElement("div");
+
+        piece.className =
+            "confetti";
+
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+
+        piece.style.background =
+            colors[
+                Math.floor(
+                    Math.random() *
+                    colors.length
+                )
+            ];
+
+
+        piece.style.width =
+            5 + Math.random() * 7 + "px";
+
+
+        piece.style.height =
+            8 + Math.random() * 12 + "px";
+
+
+        piece.style.animationDuration =
+            3 + Math.random() * 4 + "s";
+
+
+        piece.style.setProperty(
+            "--drift",
+            (Math.random() - .5) *
+            45 + "vw"
+        );
+
+
+        container.appendChild(piece);
+
+
+        setTimeout(() => {
+            piece.remove();
+        }, 8000);
+
+    }
+}
+
+
+/* FIRST CONFETTI */
+
+setTimeout(() => {
+    createConfetti(120);
+}, 500);
+
+</script>
+
+</body>
+</html>
